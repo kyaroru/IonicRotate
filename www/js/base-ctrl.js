@@ -8,6 +8,7 @@
       var self = this;
       var isIOS = ionic.Platform.isIOS();
       var isAndroid = ionic.Platform.isAndroid();
+      var currentPlatform = ionic.Platform.platform();
 
       self.toDisplay = {
         windowOrientation : "Window Orientation",
@@ -44,10 +45,10 @@
       }
 
       function onRotate() {
-        var windowOrientation = window.orientation;
-        var screenOrientation = window.screen.orientation;
-        var screenOrientationType = window.screen.orientation.type;
-        var screenOrientationAngle = window.screen.orientation.angle;
+        var windowOrientation = window.orientation? (window.orientation==0?0:window.orientation) : 'N/A';
+        var screenOrientation = screen.orientation? screen.orientation : 'N/A';
+        var screenOrientationType = screen.orientation? (isIOS? 'N/A': screen.orientation.type) :'N/A';
+        var screenOrientationAngle = screen.orientation? (screen.orientation.angle==0?0:screen.orientation.angle) : 'N/A';
 
         self.data = {
           windowOrientation : windowOrientation,

@@ -1,5 +1,5 @@
-# IonicCardIO
-IonicCardIO is a simple demonstration on rotating screen in Ionic.
+# IonicRotate
+IonicRotate is a simple demonstration on rotating screen in Ionic.
 
 ### Reference
 This project uses [cordova-plugin-screen-orientation](https://github.com/gbenvenuti/cordova-plugin-screen-orientation)

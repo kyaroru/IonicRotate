@@ -27,7 +27,6 @@
 
       function doRefresh(){
         $scope.$broadcast('scroll.refreshComplete');
-        $window.location.reload(true)
       }
 
       function rotate(){
@@ -45,17 +44,19 @@
       }
 
       function onRotate() {
-        var windowOrientation = window.orientation? (window.orientation==0?0:window.orientation) : 'N/A';
-        var screenOrientation = screen.orientation? screen.orientation : 'N/A';
-        var screenOrientationType = screen.orientation? (isIOS? 'N/A': screen.orientation.type) :'N/A';
-        var screenOrientationAngle = screen.orientation? (screen.orientation.angle==0?0:screen.orientation.angle) : 'N/A';
+        $timeout(function(){
+          var windowOrientation = window.orientation? (window.orientation==0?0:window.orientation) : 'N/A';
+          var screenOrientation = screen.orientation? screen.orientation : 'N/A';
+          var screenOrientationType = screen.orientation? (isIOS? 'N/A': screen.orientation.type) :'N/A';
+          var screenOrientationAngle = screen.orientation? (screen.orientation.angle==0?0:screen.orientation.angle) : 'N/A';
 
-        self.data = {
-          windowOrientation : windowOrientation,
-          screenOrientation : screenOrientation,
-          screenOrientationType : screenOrientationType,
-          screenOrientationAngle : screenOrientationAngle
-        }
+          self.data = {
+            windowOrientation : windowOrientation,
+            screenOrientation : screenOrientation,
+            screenOrientationType : screenOrientationType,
+            screenOrientationAngle : screenOrientationAngle
+          }
+        });
       }
 
       window.addEventListener("orientationchange", function(){

@@ -9822,10 +9822,13 @@ a.button {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-flow: column;
   margin: 10px;
   border: 1px #eee solid;
   height: 200px;
   border-radius: 5px; }
+  .card-container .btn-rotate {
+    margin: 10px; }
 
 .item-card {
   padding: 10px 10px;

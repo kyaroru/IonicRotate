@@ -3,7 +3,7 @@
 
   angular
     .module('base.ctrl',[])
-    .controller('BaseCtrl', ['$rootScope','$scope','$ionicPlatform','$timeout',function ($rootScope,$scope,$ionicPlatform,$timeout) {
+    .controller('BaseCtrl', ['$rootScope','$scope','$ionicPlatform','$ionicModal','$timeout',function ($rootScope,$scope,$ionicPlatform,$ionicModal,$timeout) {
       //variables
       var self = this;
       var isIOS = ionic.Platform.isIOS();
@@ -18,12 +18,29 @@
       };
 
       //function declaration
+      self.openModal = openModal;
+      self.closeModal = closeModal;
       self.doRefresh = doRefresh;
       self.rotate = rotate;
       self.onRotate = onRotate;
 
       //initialization
       self.onRotate();
+
+      $ionicModal.fromTemplateUrl('js/modal.html', {
+        scope: $scope,
+        animation: 'slide-in-up'
+      }).then(function(modal) {
+        self.modal = modal;
+      });
+
+      function openModal() {
+        self.modal.show();
+      };
+
+      function closeModal() {
+        self.modal.hide();
+      };
 
       function doRefresh(){
         $scope.$broadcast('scroll.refreshComplete');

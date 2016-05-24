@@ -29,6 +29,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-flow:column;
 
   margin:10px;
   border:1px #eee solid;
@@ -36,7 +37,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
   border-radius:5px;
 
   .btn-rotate {
-
+    margin:10px;
   }
 }
 

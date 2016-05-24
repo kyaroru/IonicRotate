@@ -1,0 +1,23 @@
+<ion-modal-view>
+  <ion-header-bar class="bar-royal">
+    <h1 class="title">Modal view</h1>
+    <button class="button button-outline button-light" ng-click="bc.closeModal()">
+      Close
+    </button>
+  </ion-header-bar>
+
+  <ion-content>
+    <div class="card-container">
+      <button ng-click="bc.rotate()" class="button button-outline button-royal btn-rotate">
+        Rotate Screen
+      </button>
+    </div>
+
+    <div class="list list-inset">
+      <div class="item item-card" ng-repeat="(key,value) in bc.toDisplay">
+        <div class="item-label-primary">{{value}}</div>
+        <div class="item-label-secondary">{{bc.data[key]}}</div>
+      </div>
+    </div>
+  </ion-content>
+</ion-modal-view>

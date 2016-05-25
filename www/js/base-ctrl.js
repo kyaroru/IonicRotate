@@ -8,7 +8,6 @@
       var self = this;
       var isIOS = ionic.Platform.isIOS();
       var isAndroid = ionic.Platform.isAndroid();
-      var currentPlatform = ionic.Platform.platform();
 
       self.toDisplay = {
         windowOrientation : "Window Orientation",
@@ -46,9 +45,17 @@
         $scope.$broadcast('scroll.refreshComplete');
       }
 
+      function getOrientation() {
+        var orientation = '';
+        if(window.cordova && screen.orientation) {
+          orientation = window.orientation==90 || window.orientation==-90? 'landscape':(window.orientation==0 || window.orientation==180?'portrait':'');
+        }
+        return orientation;
+      }
+
       function rotate(){
         if(window.cordova && screen.orientation) {
-          if((isIOS && screen.orientation.indexOf('landscape') >-1 ) || (isAndroid && screen.orientation.type.indexOf('landscape') >-1 )) {
+          if(getOrientation()=='landscape') {
             screen.lockOrientation('portrait');
           }
           else {
@@ -62,7 +69,7 @@
 
       function onRotate() {
         $timeout(function(){
-          var windowOrientation = window.orientation? (window.orientation==0?0:window.orientation) : 'N/A';
+          var windowOrientation = window.orientation==0? 0 : window.orientation;
           var screenOrientation = screen.orientation? screen.orientation : 'N/A';
           var screenOrientationType = screen.orientation? (isIOS? 'N/A': screen.orientation.type) :'N/A';
           var screenOrientationAngle = screen.orientation? (screen.orientation.angle==0?0:screen.orientation.angle) : 'N/A';
